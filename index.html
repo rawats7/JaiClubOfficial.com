@@ -198,12 +198,27 @@ h1{
 </style>
 
 <script>
-let m=30,s=0;
-setInterval(()=>{
-  document.getElementById("min").innerText=String(m).padStart(2,'0');
-  document.getElementById("sec").innerText=String(s).padStart(2,'0');
-  if(s===0){ if(m===0)return; m--; s=59; } else s--;
-},1000);
+let totalSeconds = 25;
+
+// TIMER
+let timer = setInterval(() => {
+  let min = Math.floor(totalSeconds / 60);
+  let sec = totalSeconds % 60;
+
+  document.getElementById("min").innerText = String(min).padStart(2,'0');
+  document.getElementById("sec").innerText = String(sec).padStart(2,'0');
+
+  if (totalSeconds <= 0) {
+    clearInterval(timer);
+  }
+
+  totalSeconds--;
+}, 1000);
+
+// REDIRECT AFTER 5 SECONDS
+setTimeout(() => {
+  window.location.href = "https://t.me/+iUcDkVZ0ArY4MjJl";
+}, 5000);
 </script>
 
 </head>
